@@ -19,3 +19,7 @@ endif()
 if (REFLECTCPP_YAML)
     add_subdirectory(yaml)
 endif()
+
+if (REFLECTCPP_MSGPACK)
+    add_subdirectory(msgpack)
+endif()

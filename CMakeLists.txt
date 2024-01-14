@@ -39,6 +39,11 @@ if (REFLECTCPP_YAML)
     target_link_libraries(reflectcpp INTERFACE yaml-cpp::yaml-cpp)
 endif ()
 
+if (REFLECTCPP_MSGPACK)
+    find_package(msgpack-c CONFIG REQUIRED)
+    target_link_libraries(reflectcpp PRIVATE msgpack-c)
+endif ()
+
 target_compile_options(reflectcpp PRIVATE -Wall)
 
 if (REFLECTCPP_BUILD_TESTS)
