@@ -16,6 +16,10 @@ struct Packer {
   msgpack_packer packer{};
   msgpack_sbuffer buffer{};
 
+  [[nodiscard]] std::string to_string() const noexcept {
+    return {buffer.data, buffer.size};
+  }
+
   Packer() {
     msgpack_sbuffer_init(&buffer);
     msgpack_packer_init(&packer, &buffer, msgpack_sbuffer_write);

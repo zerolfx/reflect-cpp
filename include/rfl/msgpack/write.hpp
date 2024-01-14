@@ -9,9 +9,10 @@ namespace rfl::msgpack {
 template <class T>
 std::string write(const T& obj) {
   using ParentType = parsing::Parent<Writer>;
+  auto packer = Packer();
   auto w = Writer();
-  auto res = Parser<T>::write(w, obj, ParentType::Root{});
-  return res;
+  Parser<T>::write(w, obj, ParentType::Root{});
+  return packer.to_string();
 }
 
 }  // namespace rfl::msgpack
